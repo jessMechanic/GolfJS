@@ -21,13 +21,11 @@ class BallClass extends PhysObj {
         this.velocity = new Vector2(0, 0);
         this.collided = false;
     }
-    update() {
+    update(elapsed) {
 
-        this.position = this.position.add(this.velocity);
+        this.position = this.position.add(this.velocity).mul(elapsed);
+        this.velocity = this.velocity.add(physics.gravity);
 
-        if (!this.grounded) {
-            this.velocity = this.velocity.add(physics.gravity);
-        }
     }
 }
 

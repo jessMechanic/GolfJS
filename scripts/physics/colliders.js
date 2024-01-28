@@ -8,7 +8,7 @@ class colliderClass {
         this.from = from;
         this.to = to;
 
-        this.friction = 0.03;
+        this.friction = 0.00;
         this.bounce = 0.5;
     }
     middle() {
@@ -24,17 +24,17 @@ class colliderClass {
     collide(ball) {
 
         let normalAngle = this.angle() - 90 / 180 * Math.PI;
-        let diff = ball.position.sub(this.position.add(this.middle()));
+        let diff = ball.position.sub(this.position.add(this.middle())).normalize();
         let normal = Vector2.fromAngle(normalAngle);
         let dotProd = diff.dot(normal);
 
         if (dotProd < 0) {
-            normalAngle = normalAngle - 180 / 180 * Math.PI;
+            normalAngle = normalAngle - Math.PI;
         }
 
         let angle = this.angle();
         if (diff.dot(Vector2.fromAngle(angle)) < 0) {
-            angle = angle - 180 / 180 * Math.PI;
+            angle = angle - Math.PI;
         }
 
         let p = ball.position;
