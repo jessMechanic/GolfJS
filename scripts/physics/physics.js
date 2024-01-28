@@ -4,7 +4,7 @@ import { mouseControls } from '../input/mouseControls.js';
 
 class physicsClass {
     constructor() {
-        this.gravity = new Vector2(0, 1);
+        this.gravity = new Vector2(0, 0.5);
         this.friction = 0.5;
     }
     physicsUpdate(elapsed) {
@@ -23,33 +23,7 @@ class physicsClass {
                         //     ball.velocity = Vector2.zero();
                         // }
                     }
-                    let intersect = new Vector2(result.x, result.y);
-
-                    ball.position = intersect.sub(ball.velocity);
-
-                    let ColAngle = collider.angle();
-
-                    //for later : figure out why the F this works
-
-                    if (ColAngle < -Math.PI / 2) {
-                        ColAngle = ColAngle + Math.PI * 2;
-
-                    } else if (ColAngle < 0) {
-                        ColAngle = ColAngle + Math.PI;
-                    }
-
-
-
-                    let ballAngle = ball.velocity.angle();
-
-                    let newAngle = ballAngle - ColAngle;
-                    newAngle = ColAngle - newAngle;
-                    let length = ball.velocity.mag();
-                    if (length < 0.1) {
-                        length = 0;
-                    }
-                    ball.velocity = Vector2.fromAngle(newAngle).mul(length).mul(new Vector2(1 - collider.friction, collider.bounce).rotate(ColAngle + Math.PI));
-                    ball.collided = true;
+                
                 }
             }
             ball.update(elapsed);

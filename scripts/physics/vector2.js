@@ -47,11 +47,18 @@ class Vector2 {
     static fromAngle(angle) {
         return new Vector2(Math.cos(angle), Math.sin(angle));
     }
+    static rotateAround(center, point, angle) {
+        let diff = point.sub(center);
+        return center.add(diff.rotate(angle));
+    }
 
     static random() {
         return new Vector2(Math.random() * 2 - 1, Math.random() * 2 - 1);
     }
+    static avg(x, y) {
+        return new Vector2((x.x + y.x) / 2, (x.y + y.y) / 2);
 
+    }
     static zero() {
         return new Vector2(0, 0);
     }

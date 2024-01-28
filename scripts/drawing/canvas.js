@@ -37,26 +37,7 @@ class canvasClass {
     clear() {
         this.ctx.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
     }
-    drawCollider(collider) {
 
-
-        this.ctx.lineWidth = 4;
-        this.ctx.strokeStyle = 'white';
-        this.ctx.beginPath();
-        this.ctx.moveTo(this.toCanvasSpace(collider.position.add(collider.from)).x, this.toCanvasSpace(collider.position.add(collider.from)).y);
-        this.ctx.lineTo(this.toCanvasSpace(collider.position.add(collider.to)).x, this.toCanvasSpace(collider.position.add(collider.to)).y);
-        this.ctx.stroke();
-
-        if (this.drawColliderOffset) {
-            let angle = collider.angle();
-            let to = Vector2.fromAngle(angle + 90 / 180 * Math.PI).mul(50);
-
-            let middle = collider.position.add(collider.from.add(collider.to).div(2));
-
-            this.drawLine(middle, middle.add(to), 'red');
-        }
-
-    }
     drawBall(ball, angle = 0) {
         this.camera = this.camera.mul(5).add(ball.position).mul(1 / 6);
         let halfWidth = this.canvasEl.width / 2;
