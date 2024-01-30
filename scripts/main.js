@@ -10,11 +10,11 @@ import { lineColClass } from './physics/lineCol.js';
 import { triangleColliderClass } from './physics/triangleCol.js';
 import { Vector2 } from './physics/vector2.js';
 
-let triang = new triangleColliderClass(new Vector2(0, 0), new Vector2(200, 0), new Vector2(0, 200), new Vector2(-200, 0));
-triang.rotation = 0.2;
-storage.addCollider(triang);
+// let triang = new triangleColliderClass(new Vector2(0, 0), new Vector2(200, 0), new Vector2(0, 200), new Vector2(-200, 0));
+// triang.rotation = 0.2;
+// storage.addCollider(triang);
 
-storage.addCollider(new lineColClass(new Vector2(800, 250), new Vector2(0, 10), new Vector2(0, -50)));
+storage.addCollider(new lineColClass(new Vector2(800, 250), new Vector2(0, -50), new Vector2(0, 10)));
 
 storage.addCollider(new lineColClass(new Vector2(-250, 250), new Vector2(0, 10), new Vector2(0, -50)));
 

@@ -24,9 +24,7 @@ class Vector2 {
         return new Vector2(this.x / s, this.y / s);
     }
 
-    dot(v) {
-        return this.x * v.x + this.y * v.y;
-    }
+
 
     mag() {
         return Math.sqrt(this.x * this.x + this.y * this.y);
@@ -44,6 +42,9 @@ class Vector2 {
         return new Vector2(Math.cos(angle) * this.x - Math.sin(angle) * this.y, Math.sin(angle) * this.x + Math.cos(angle) * this.y);
     }
 
+    static dot(a, v) {
+        return a.x * v.x + a.y * v.y;
+    }
     static fromAngle(angle) {
         return new Vector2(Math.cos(angle), Math.sin(angle));
     }

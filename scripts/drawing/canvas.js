@@ -37,16 +37,19 @@ class canvasClass {
     clear() {
         this.ctx.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
     }
-
-    drawBall(ball, angle = 0) {
-        this.camera = this.camera.mul(5).add(ball.position).mul(1 / 6);
+    drawDot(position, radius = 5, style = 'white') {
         let halfWidth = this.canvasEl.width / 2;
         let halfHeight = this.canvasEl.height / 2;
 
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = style;
         this.ctx.beginPath();
-        this.ctx.arc(halfWidth + ((ball.position.x) - this.camera.x), halfHeight + ((ball.position.y) - this.camera.y), ball.radius, 0, 2 * Math.PI);
+        this.ctx.arc(halfWidth + position.x - this.camera.x, halfHeight + position.y - this.camera.y, radius, 0, 2 * Math.PI);
         this.ctx.fill();
+    }
+    drawBall(ball, angle = 0) {
+        this.camera = this.camera.mul(5).add(ball.position).mul(1 / 6);
+        this.drawDot(ball.position, ball.radius, 'white');
+
         if (this.drawBallVelocity) {
             let to = ball.position.add(ball.velocity.normalize().mul(50));
 

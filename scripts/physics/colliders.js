@@ -6,8 +6,8 @@ import { physics } from "./physics.js";
 class colliderClass {
     constructor(position) {
         this.position = position;
-        this.friction = 0.1;
-        this.bounce = 0.1;
+        this.friction = 0.1;//bw 0 and 1
+        this.bounce = 0.8;//bw 0 and 1
 
     }
     collide(ball) {
